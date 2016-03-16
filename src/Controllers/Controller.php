@@ -17,4 +17,9 @@ class Controller {
 		echo $this->twig->render($templateName.'.html', $params);
 	}
 
+	public function get404() {
+		echo "Nie znaleziono strony, błąd 404";
+		exit();
+	}
+
 }

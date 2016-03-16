@@ -13,6 +13,27 @@
 	color: black;
 }
 
+.contact {
+	border: 1px solid #7F7B77;
+	font-size: 17px;
+	border-radius: 10px;
+	padding: 30px;
+}
+.contact h1 {
+	text-align: center;
+	color: #7F7B77;
+}
+
+.contact p {
+	padding-top: 30px;
+	font-size: 17px;
+	color: #7F7B77;
+}
+
+.contact p .info {
+	color: black;
+}
+
 .single-contact	span {
 	font-size: 50px;
 	display: block;

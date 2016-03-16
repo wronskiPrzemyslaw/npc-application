@@ -16,13 +16,23 @@ class PageController extends Controller {
 		$this->renderView('login');
 	}
 
+	public function singleContact($id) {
+
+		$contact = Contact::find(current($id));
+		
+		if($contact == null) {
+			$this->get404();
+		}
+		
+		$contact->birth_date = convertDate($contact->birth_date);
+
+		$this->renderView('contact', ['contact' => $contact]);
+	}
+
 	public function test() {
 		$user = User::find(1);
 		echo $user->name;
 	}
 
-	public function get404() {
-		echo "Nie znaleziono strony, błąd 404";
-	}
 
 }
