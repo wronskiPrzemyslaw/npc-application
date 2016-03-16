@@ -1,6 +1,6 @@
 <?php
 // włączenie raportowania błędów w pliku .env
-if(!getenv('DEBUG')) { error_reporting(0); }
+ // error_reporting(0)
 
 require __DIR__ . '/../bootstrap/start.php';
 Dotenv::load(__DIR__ . '/../');

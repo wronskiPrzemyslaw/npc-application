@@ -1,11 +1,14 @@
 <?php 
 namespace Wronski\Controllers;
 
+use Wronski\Models\User;
+use Wronski\Models\Contact;
+
 class PageController extends Controller {
 
 	public function index() {
-
-		$this->renderView('index');
+		$contacts = Contact::all();
+		$this->renderView('index', ['contacts' => $contacts]);
 	}
 
 	public function getLogin() {
@@ -13,8 +16,9 @@ class PageController extends Controller {
 		$this->renderView('login');
 	}
 
-	public function test($id) {
-		print_r($id);
+	public function test() {
+		$user = User::find(1);
+		echo $user->name;
 	}
 
 	public function get404() {

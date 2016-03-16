@@ -4,58 +4,21 @@
     <section class="contacts">
       <div class="container">
         <div class="row">
+
+        {% for contact in contacts %}
         <!-- single contact -->
-          <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="col-xs-6 col-sm-4 col-md-3">
             <div class="single-contact">
               <span class="glyphicon glyphicon-user"></span>
               <div class="data">
-                <p>Imię: <span class="info">Przemysław</span></p>
-                <p>Nazwisko: <span class="info">Wroński</span></p>
-                <p>Email: <span class="info">wronski.przemyslaw@gmail.com</span></p>
-                <p>Numer telefonu: <span class="info">665-564-544</span></p>
-                <p>Data urodzenia: <span class="info">22 marzec 1989</span></p>
+                <p>Imię: <span class="info">{{ contact.first_name }}</span></p>
+                <p>Nazwisko: <span class="info">{{ contact.last_name }}</span></p>
+                <a href="/{{ contact.id }}" class="btn btn-primary">Więcej...</a>
               </div>
             </div>
           </div>
-          <!-- single contact -->
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="single-contact">
-              <span class="glyphicon glyphicon-user"></span>
-              <div class="data">
-                <p>Imię:</p>
-                <p>Nazwisko:</p>
-                <p>Email:</p>
-                <p>Numer telefonu:</p>
-                <p>Data urodzenia:</p>
-              </div>
-            </div>
-          </div>
-          <!-- single contact -->
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="single-contact">
-              <span class="glyphicon glyphicon-user"></span>
-              <div class="data">
-                <p>Imię:</p>
-                <p>Nazwisko:</p>
-                <p>Email:</p>
-                <p>Numer telefonu:</p>
-                <p>Data urodzenia:</p>
-              </div>
-            </div>
-          </div>
-          <!-- single contact -->
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="single-contact">
-              <span class="glyphicon glyphicon-user"></span>
-              <div class="data">
-                <p>Imię:</p>
-                <p>Nazwisko:</p>
-                <p>Email:</p>
-                <p>Numer telefonu:</p>
-                <p>Data urodzenia:</p>
-              </div>
-            </div>
-          </div>
+        {% endfor %}
+          
         </div>
       </div>
     </section>
