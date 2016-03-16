@@ -1,13 +1,11 @@
 <?php
 
 use Phinx\Migration\AbstractMigration;
-use fzaninotto\faker\Faker\Factory;
 
 class SeedContactsTable extends AbstractMigration
 {
     public function up()
     {
-
         $this->execute("
             INSERT INTO contacts (first_name, last_name, email, phone, birth_date) 
             VALUES ('Przemysław', 'Wroński', 'wronski.przemyslaw@gmail.com', '698-695-652', '1989-03-22');

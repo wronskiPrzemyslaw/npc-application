@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2">
+
+				<h1>Edytuj kontakt</h1>
+
+				<hr>
+
+				<form class="form-horizontal" method="post" action="/update/{{ contact.id }}">
+					<input type="hidden" name="_method" value="put" />
+					<div class="form-group">
+					    <label for="first_name" class="col-sm-2 control-label">Imię</label>
+					    <div class="col-sm-10">
+					      <input type="text" value="{{ contact.first_name }}" class="form-control" placeholder="Imię" name="first_name">
+					    </div>
+				    </div>
+				    <div class="form-group">
+					    <label for="last_name" class="col-sm-2 control-label">Nazwisko</label>
+					    <div class="col-sm-10">
+					      <input type="text" value="{{ contact.last_name }}" class="form-control" placeholder="Nazwisko" name="last_name">
+					    </div>
+				    </div>
+				  	<div class="form-group">
+					    <label for="email" class="col-sm-2 control-label">Email</label>
+					    <div class="col-sm-10">
+					      <input type="email" value="{{ contact.email }}" class="form-control" placeholder="Email" name="email">
+					    </div>
+				  	</div>
+				  	<div class="form-group">
+					    <label for="phone" class="col-sm-2 control-label">Numer telefonu</label>
+					    <div class="col-sm-10">
+					      <input type="text" value="{{ contact.phone }}" class="form-control" placeholder="Numer" name="phone">
+					    </div>
+				 	</div>
+				  	<div class="form-group">
+					    <label for="phone" class="col-sm-2 control-label">Data urodzenia</label>
+					    <div class="col-sm-10">
+					      <input type="date" value="{{ contact.birth_date }}" class="form-control" placeholder="Numer" name="birth_date" >
+					    </div>
+				  	</div>
+				  <div class="form-group">
+				    <div class="col-sm-offset-2 col-sm-10">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <div class="col-sm-offset-2 col-sm-10">
+				      <button type="submit" class="btn btn-primary">Edytuj</button>
+				    </div>
+				  </div>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

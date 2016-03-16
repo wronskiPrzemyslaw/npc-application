@@ -13,3 +13,8 @@ function convertDate($date) {
 
 		return $goodLookingDate;
 }
+
+function redirectTo($location) {
+	
+	header("Location: ".$location); exit();
+}

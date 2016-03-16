@@ -7,8 +7,9 @@ use Wronski\Models\Contact;
 class PageController extends Controller {
 
 	public function index() {
+		
 		$contacts = Contact::all();
-		$this->renderView('index', ['contacts' => $contacts]);
+		$this->renderView('index', compact('contacts'));
 	}
 
 	public function getLogin() {
@@ -19,20 +20,14 @@ class PageController extends Controller {
 	public function singleContact($id) {
 
 		$contact = Contact::find(current($id));
-		
+
 		if($contact == null) {
 			$this->get404();
 		}
 		
 		$contact->birth_date = convertDate($contact->birth_date);
 
-		$this->renderView('contact', ['contact' => $contact]);
+		$this->renderView('contact', compact('contact'));
 	}
-
-	public function test() {
-		$user = User::find(1);
-		echo $user->name;
-	}
-
 
 }

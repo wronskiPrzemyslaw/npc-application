@@ -7,6 +7,9 @@
 				<p>Email: <span class="info">{{ contact.email }}</span></p>
 				<p>Telefon: <span class="info">{{ contact.phone }}</span></p>
 				<p>Data urodzenia: <span class="info">{{ contact.birth_date }}</span></p>
+				
+				<a href="/edit/{{ contact.id }}" class="btn btn-info">Edytuj kontakt</a>
+				<a href="/delete/{{ contact.id }}" class="btn btn-danger">Usuń kontakt</a>
 			</div>
 		</div>
 	</div>
