@@ -7,14 +7,9 @@ use Wronski\Models\Contact;
 class PageController extends Controller {
 
 	public function index() {
-		
+
 		$contacts = Contact::all();
 		$this->renderView('index', compact('contacts'));
-	}
-
-	public function getLogin() {
-
-		$this->renderView('login');
 	}
 
 	public function singleContact($id) {

@@ -8,8 +8,10 @@
 				<p>Telefon: <span class="info">{{ contact.phone }}</span></p>
 				<p>Data urodzenia: <span class="info">{{ contact.birth_date }}</span></p>
 				
+				{% if loggedUser() %}
 				<a href="/edit/{{ contact.id }}" class="btn btn-info">Edytuj kontakt</a>
 				<a href="/delete/{{ contact.id }}" class="btn btn-danger">Usuń kontakt</a>
+				{% endif %}
 			</div>
 		</div>
 	</div>
