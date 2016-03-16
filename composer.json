@@ -1,0 +1,13 @@
+{
+    "name": "wronski/contact-app",
+    "authors": [
+        {
+            "name": "Wronski Przemyslaw",
+            "email": "wronski.przemyslaw@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+    	"psr-4": { "Wronski\\": "src/" }
+    }
+}
