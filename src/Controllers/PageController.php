@@ -1,11 +1,16 @@
 <?php 
 namespace Wronski\Controllers;
 
-class PageController {
+class PageController extends Controller {
 
 	public function index() {
 
-		include __DIR__ . '/../../views/index.html';
+		$this->renderView('index');
+	}
+
+	public function getLogin() {
+
+		$this->renderView('login');
 	}
 
 	public function test($id) {
