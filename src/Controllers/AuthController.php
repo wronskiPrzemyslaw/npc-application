@@ -19,6 +19,8 @@ class AuthController extends Controller {
 
 	public function postLogin() {
 
+		$this->csrfProtect();
+
 		$user = User::where('email', $_POST['email'])->first();
 
 		if(!$this->userIsFound($user, $_POST['password'])) {

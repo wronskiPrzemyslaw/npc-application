@@ -14,6 +14,8 @@ class ContactController extends Controller {
 
 	public function store() {
 
+		$this->csrfProtect();
+
 		$errors = ContactValidator::isValid();
 		if(count($errors) > 0) {
 			$this->errorMessage($errors);
@@ -45,6 +47,8 @@ class ContactController extends Controller {
 
 	public function update($id) {
 
+		$this->csrfProtect();
+
 		$contact = $this->findContactOr404($id);
 
 		$errors = ContactValidator::isValid();
@@ -69,6 +73,8 @@ class ContactController extends Controller {
 	}
 
 	public function delete() {
+
+		$this->csrfProtect();
 
 		$contact = $this->findContactOr404((int)$_POST['id']);
 

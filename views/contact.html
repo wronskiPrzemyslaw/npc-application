@@ -15,6 +15,7 @@
 				{% if loggedUser() %}
 				<a href="/edit/{{ contact.id }}" class="btn btn-info">Edytuj kontakt</a>
 				<form action="/delete" id="form-delete" method="post">
+					<input type="hidden" name="_token" value="{{ signer.getSignature()|raw }}">
 					<input type="hidden" name="id" value="{{ contact.id }}">
 					<button class="btn btn-danger" id="btn-delete">Usuń kontakt</a>
 				</form>
