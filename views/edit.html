@@ -9,7 +9,7 @@
 				<hr>
 
 				<form class="form-horizontal" method="post" action="/update/{{ contact.id }}">
-					<input type="hidden" name="_method" value="put" />
+					<input type="hidden" name="id" value="{{ contact.id }}" />
 					<div class="form-group">
 					    <label for="first_name" class="col-sm-2 control-label">Imię</label>
 					    <div class="col-sm-10">

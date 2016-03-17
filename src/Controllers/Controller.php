@@ -27,6 +27,11 @@ class Controller {
 		    return Messanger::flashMessage();
 		});
 		$this->twig->addFunction($function);
+		// dodanie nowej funkcji przekazującej błędy walidacji
+		$function = new \Twig_SimpleFunction('errorMessage', function () {
+		    return Messanger::errorMessage();
+		});
+		$this->twig->addFunction($function);
 	}
 
 	protected function renderView($templateName, $params = []) {
@@ -35,6 +40,9 @@ class Controller {
 		
 		if(isset($_SESSION['flashMessage'])) { 
 			unset($_SESSION['flashMessage']);
+		}
+		if(isset($_SESSION['errorMessage'])) { 
+			unset($_SESSION['errorMessage']);
 		}
 	}
 
@@ -49,6 +57,10 @@ class Controller {
 
 	protected function flashMessage(array $message) {
 		$_SESSION['flashMessage'] = $message;
+	}
+
+	protected function errorMessage(array $message) {
+		$_SESSION['errorMessage'] = $message;
 	}
 
 	protected function findContactOr404($id) {

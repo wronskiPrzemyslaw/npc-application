@@ -13,4 +13,13 @@ class Messanger {
 		return false;
 	}
 
+	public static function errorMessage() {
+
+		if(isset($_SESSION['errorMessage'])) {
+			return $_SESSION['errorMessage'];
+		}
+
+		return false;
+	}
+
 }

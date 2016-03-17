@@ -3,6 +3,7 @@ namespace Wronski\Controllers;
 
 use Wronski\Models\User;
 use Wronski\Models\Contact;
+use Wronski\Validation\ContactValidator;
 
 class ContactController extends Controller {
 
@@ -12,6 +13,12 @@ class ContactController extends Controller {
 	}
 
 	public function store() {
+
+		$errors = ContactValidator::isValid();
+		if(count($errors) > 0) {
+			$this->errorMessage($errors);
+			redirectTo('/create');
+		}	
 
 		$contact = new Contact;
 		$contact->first_name = $_POST['first_name'];
@@ -40,19 +47,25 @@ class ContactController extends Controller {
 
 		$contact = $this->findContactOr404($id);
 
+		$errors = ContactValidator::isValid();
+		if(count($errors) > 0) {
+			$this->errorMessage($errors);
+			redirectTo('/edit/'.$contact->id);
+		}
+
 		$contact->first_name = $_POST['first_name'];
 		$contact->last_name = $_POST['last_name'];
 		$contact->email = $_POST['email'];
 		$contact->phone = $_POST['phone'];
 		$contact->birth_date = $_POST['birth_date'];
 		
-		if($contact->save()) {
+		if($contact->update()) {
 			$this->flashMessage(['success', 'Kontakt został zmodyfikowany']);
 		} else {
 			$this->flashMessage(['danger', 'Niestety nie można było dokonać modyfikacji']);
 		}
 
-		redirectTo('/contact/'.current($id));
+		redirectTo('/contact/'.$contact->id);
 	}
 
 	public function delete() {
