@@ -8,7 +8,7 @@
 
 				<hr>
 
-				<form class="form-horizontal" method="post" action="/update/{{ contact.id }}">
+				<form class="form-horizontal" method="post" action="/update/{{ contact.id }}" id="form-create">
 					<input type="hidden" name="_token" value="{{ signer.getSignature()|raw }}">
 					<input type="hidden" name="id" value="{{ contact.id }}" />
 					<div class="form-group">
@@ -47,7 +47,7 @@
 				  </div>
 				  <div class="form-group">
 				    <div class="col-sm-offset-2 col-sm-10">
-				      <button type="submit" class="btn btn-primary">Edytuj</button>
+				      <button type="submit" class="btn btn-primary btn-form">Edytuj</button>
 				    </div>
 				  </div>
 				</form>

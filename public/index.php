@@ -1,5 +1,4 @@
 <?php
-// włączenie raportowania błędów w pliku .env
  // error_reporting(0)
 
 require __DIR__ . '/../bootstrap/start.php';

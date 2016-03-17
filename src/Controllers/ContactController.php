@@ -87,6 +87,4 @@ class ContactController extends Controller {
 		redirectTo('/');
 	}
 
-	
-
 }

@@ -8,7 +8,7 @@
 
 				<hr>
 
-				<form class="form-horizontal" method="post" action="/create">
+				<form class="form-horizontal" method="post" action="/create" id="form-create">
 					<input type="hidden" name="_token" value="{{ signer.getSignature()|raw }}">
 					<input type="hidden" name="id" value="" />
 					<div class="form-group">
@@ -55,3 +55,4 @@
 		</div>
 	</div>
 {% endblock %}
+
