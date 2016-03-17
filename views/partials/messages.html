@@ -1,0 +1,12 @@
+{% if flashMessage() %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2">
+			<div class="alert alert-{{ flashMessage()[0] }} alert-dismissible" role="alert">
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			  {{ flashMessage()[1] }}
+			</div>
+		</div>
+	</div>
+</div>
+{% endif %}

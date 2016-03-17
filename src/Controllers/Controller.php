@@ -3,6 +3,7 @@ namespace Wronski\Controllers;
 
 use Wronski\Auth\LoggedIn;
 use Wronski\Models\User;
+use Wronski\Messages\Messanger;
 
 class Controller {
 
@@ -15,15 +16,25 @@ class Controller {
 		$this->twig = new \Twig_Environment($this->loader, [
 			'cache' => false, 'debug' => true
 		]);
-		// dodanie nowej funkcji do Twiga
+		// dodanie nowej funkcji autoryzacyjnej do Twiga
 		$function = new \Twig_SimpleFunction('loggedUser', function () {
 		    return LoggedIn::user();
+		});
+		$this->twig->addFunction($function);
+		// dodanie nowej funkcji przekazującej wiadomości do Twiga
+		$function = new \Twig_SimpleFunction('flashMessage', function () {
+		    return Messanger::flashMessage();
 		});
 		$this->twig->addFunction($function);
 	}
 
 	protected function renderView($templateName, $params = []) {
+
 		echo $this->twig->render($templateName.'.html', $params);
+		
+		if(isset($_SESSION['flashMessage'])) { 
+			unset($_SESSION['flashMessage']);
+		}
 	}
 
 	public function get404() {
@@ -31,8 +42,12 @@ class Controller {
 		exit();
 	}
 
-	protected function userVerified(User $user, $hash) {
+	protected function userIsVerified($user, $hash) {
 		return ($user != null && password_verify($hash, $user->password));
+	}
+
+	protected function flashMessage(array $message) {
+		$_SESSION['flashMessage'] = $message;
 	}
 
 }

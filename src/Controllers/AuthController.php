@@ -3,11 +3,16 @@ namespace Wronski\Controllers;
 
 use Wronski\Models\User;
 use Wronski\Models\Contact;
+use Wronski\Auth\LoggedIn;
 
 class AuthController extends Controller {
 
 	
 	public function getLogin() {
+
+		if(LoggedIn::user()) {
+			redirectTo('/');
+		}
 
 		$this->renderView('login');
 	}
@@ -16,20 +21,21 @@ class AuthController extends Controller {
 
 		$user = User::where('email', $_POST['email'])->first();
 
-		if($this->userVerified($user, $_POST['password'])) {
-
-			$_SESSION['user'] = $user;
-			redirectTo('/');
+		if(!$this->userIsVerified($user, $_POST['password'])) {
+			
+			$this->flashMessage(['danger', 'Niepoprawny login lub hasło']);
+			redirectTo('/login');	
 		} 
 
-		$this->renderView('login', ['msg' => 'Niepoprawny login lub hasło']);
-		
+		$_SESSION['user'] = $user;
+		$this->flashMessage(["success", "Zostałeś poprawnie zalogowany"]);
+		redirectTo('/');
 	}
 
 	public function logout() {
-		
+
 		unset($_SESSION['user']);
-		session_destroy();
+		$this->flashMessage(["success", "Zostałeś pomyślnie wylogowany"]);
 		redirectTo('/login');
 	}
 

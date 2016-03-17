@@ -20,6 +20,8 @@ class ContactController extends Controller {
 		$contact->phone = $_POST['phone'];
 		$contact->birth_date = $_POST['birth_date'];
 		$contact->save();
+
+		redirectTo('/');
 	}
 
 	public function edit($id) {

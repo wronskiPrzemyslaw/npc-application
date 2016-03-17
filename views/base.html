@@ -1,3 +1,4 @@
+{% autoescape %}
 <!DOCTYPE html>
 <html lang="pl">
   <head>
@@ -37,6 +38,8 @@
 
     <div class="separator"></div>
 
+    
+
     {% block content %}
 
     {% endblock %}
@@ -47,3 +50,4 @@
   {% endblock %}
   </body>
 </html>
+{% endautoescape %}
