@@ -14,11 +14,7 @@ class PageController extends Controller {
 
 	public function singleContact($id) {
 
-		$contact = Contact::find(current($id));
-
-		if($contact == null) {
-			$this->get404();
-		}
+		$contact = $this->findContactOr404($id);
 		
 		$contact->birth_date = convertDate($contact->birth_date);
 

@@ -21,7 +21,7 @@ class AuthController extends Controller {
 
 		$user = User::where('email', $_POST['email'])->first();
 
-		if(!$this->userIsVerified($user, $_POST['password'])) {
+		if(!$this->userIsFound($user, $_POST['password'])) {
 			
 			$this->flashMessage(['danger', 'Niepoprawny login lub hasło']);
 			redirectTo('/login');	

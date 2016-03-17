@@ -1,5 +1,10 @@
 {% extends "base.html" %}
+{% block styles %}
+	{{ parent() }}
+    <link href="/css/sweetalert.css" rel="stylesheet">
+{% endblock %}
 {% block content %}
+	{% include "partials/messages.html" %}
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-2 contact">
@@ -10,9 +15,34 @@
 				
 				{% if loggedUser() %}
 				<a href="/edit/{{ contact.id }}" class="btn btn-info">Edytuj kontakt</a>
-				<a href="/delete/{{ contact.id }}" class="btn btn-danger">Usuń kontakt</a>
+				<form action="/delete" id="form-delete" method="post">
+					<input type="hidden" name="id" value="{{ contact.id }}">
+					<button class="btn btn-danger" id="btn-delete">Usuń kontakt</a>
+				</form>
 				{% endif %}
 			</div>
 		</div>
 	</div>
+{% endblock %}
+{% block scripts %}
+	{{ parent() }}
+	<script src="/js/sweetalert.min.js"></script>
+	<!-- <script src="/js/script.js" ></script> -->
+	<script>
+	$('#btn-delete').click(function(e) {
+		e.preventDefault();
+		swal({   
+			title: "Czy jesteś pewien?",    
+			type: "warning",   
+			showCancelButton: true,   
+			confirmButtonColor: "#DD6B55",
+			cancelButtonText: "Anuluj",   
+			confirmButtonText: "Tak, usuń!",   
+			closeOnConfirm: true }, 
+
+			function(){   
+				$('#form-delete').submit();
+			});
+	});
+	</script>
 {% endblock %}

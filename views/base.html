@@ -6,9 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap 101 Template</title>
+    {% block styles %}
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet" >
+    {% endblock %}
   </head>
   <body>
 
@@ -38,7 +40,7 @@
 
     <div class="separator"></div>
 
-    
+
 
     {% block content %}
 

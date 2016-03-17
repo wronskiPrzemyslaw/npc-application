@@ -4,6 +4,7 @@ namespace Wronski\Controllers;
 use Wronski\Auth\LoggedIn;
 use Wronski\Models\User;
 use Wronski\Messages\Messanger;
+use Wronski\Models\Contact;
 
 class Controller {
 
@@ -38,16 +39,32 @@ class Controller {
 	}
 
 	public function get404() {
-		echo "Nie znaleziono strony, błąd 404";
+		$this->renderView('404');
 		exit();
 	}
 
-	protected function userIsVerified($user, $hash) {
+	protected function userIsFound($user, $hash) {
 		return ($user != null && password_verify($hash, $user->password));
 	}
 
 	protected function flashMessage(array $message) {
 		$_SESSION['flashMessage'] = $message;
 	}
+
+	protected function findContactOr404($id) {
+
+		if(is_array($id)) {
+			$contact = Contact::find(current($id));
+		} else {
+			$contact = Contact::find($id);
+		}
+
+		if($contact == null) {
+			$this->get404();
+		}
+
+		return $contact;
+	}
+
 
 }

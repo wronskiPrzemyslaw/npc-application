@@ -58,3 +58,12 @@
 	padding-bottom: 50px;
 	padding-left: 10px;
 }
+
+#form-delete {
+	display: inline-block;
+}
+
+#btn-delete {
+	display: inline-block;
+	margin-top: 40px;
+}
